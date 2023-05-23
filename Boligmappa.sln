@@ -1,0 +1,90 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0E70A82E-D359-4438-8193-A4360D797FA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boligmappa.Core", "src\Boligmappa.Core\Boligmappa.Core.csproj", "{C64B11B8-FD91-48AD-A6DE-C694B8ACA87F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boligmappa.Configuration", "src\Boligmappa.Configuration\Boligmappa.Configuration.csproj", "{E7B610D1-4F58-4D3F-BD8F-24F1A19B6EA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boligmappa.Data.Postgres", "src\Boligmappa.Data.Postgres\Boligmappa.Data.Postgres.csproj", "{08899F9D-45EC-40A2-9E29-01B91987D18C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boligmappa.Queue.Sqs", "src\Boligmappa.Queue.Sqs\Boligmappa.Queue.Sqs.csproj", "{F97BAF87-2046-4F5B-AC9D-7101F1DD1CD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boligmappa.Service.DummyJson", "src\Boligmappa.Service.DummyJson\Boligmappa.Service.DummyJson.csproj", "{C198687E-9566-4207-8A1D-4C93A9E8E6AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boligmappa.Queue.Sqs.Worker", "src\Boligmappa.Queue.Sqs.Worker\Boligmappa.Queue.Sqs.Worker.csproj", "{8D377A89-3821-4AB9-9908-AD3AF1905CB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boligmappa.Server", "src\Boligmappa.Server\Boligmappa.Server.csproj", "{979F3CF6-562D-47B0-BA6A-E7897F44857F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boligmappa.ConsoleBase", "src\Boligmappa.ConsoleBase\Boligmappa.ConsoleBase.csproj", "{07B8EC45-304D-412F-AACD-BADDA0219B87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boligmappa.ConsoleApp1", "src\Boligmappa.ConsoleApp1\Boligmappa.ConsoleApp1.csproj", "{3087DDC6-129F-478B-B4CA-562C58DB882A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boligmappa.ConsoleApp2", "src\Boligmappa.ConsoleApp2\Boligmappa.ConsoleApp2.csproj", "{901F562C-8333-4F36-8508-5032DAEAC20F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C64B11B8-FD91-48AD-A6DE-C694B8ACA87F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C64B11B8-FD91-48AD-A6DE-C694B8ACA87F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C64B11B8-FD91-48AD-A6DE-C694B8ACA87F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C64B11B8-FD91-48AD-A6DE-C694B8ACA87F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08899F9D-45EC-40A2-9E29-01B91987D18C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08899F9D-45EC-40A2-9E29-01B91987D18C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08899F9D-45EC-40A2-9E29-01B91987D18C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08899F9D-45EC-40A2-9E29-01B91987D18C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F97BAF87-2046-4F5B-AC9D-7101F1DD1CD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F97BAF87-2046-4F5B-AC9D-7101F1DD1CD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F97BAF87-2046-4F5B-AC9D-7101F1DD1CD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F97BAF87-2046-4F5B-AC9D-7101F1DD1CD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C198687E-9566-4207-8A1D-4C93A9E8E6AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C198687E-9566-4207-8A1D-4C93A9E8E6AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C198687E-9566-4207-8A1D-4C93A9E8E6AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C198687E-9566-4207-8A1D-4C93A9E8E6AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D377A89-3821-4AB9-9908-AD3AF1905CB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D377A89-3821-4AB9-9908-AD3AF1905CB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D377A89-3821-4AB9-9908-AD3AF1905CB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D377A89-3821-4AB9-9908-AD3AF1905CB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3087DDC6-129F-478B-B4CA-562C58DB882A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3087DDC6-129F-478B-B4CA-562C58DB882A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3087DDC6-129F-478B-B4CA-562C58DB882A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3087DDC6-129F-478B-B4CA-562C58DB882A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{979F3CF6-562D-47B0-BA6A-E7897F44857F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{979F3CF6-562D-47B0-BA6A-E7897F44857F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{979F3CF6-562D-47B0-BA6A-E7897F44857F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{979F3CF6-562D-47B0-BA6A-E7897F44857F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7B610D1-4F58-4D3F-BD8F-24F1A19B6EA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7B610D1-4F58-4D3F-BD8F-24F1A19B6EA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7B610D1-4F58-4D3F-BD8F-24F1A19B6EA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7B610D1-4F58-4D3F-BD8F-24F1A19B6EA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07B8EC45-304D-412F-AACD-BADDA0219B87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07B8EC45-304D-412F-AACD-BADDA0219B87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07B8EC45-304D-412F-AACD-BADDA0219B87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07B8EC45-304D-412F-AACD-BADDA0219B87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{901F562C-8333-4F36-8508-5032DAEAC20F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{901F562C-8333-4F36-8508-5032DAEAC20F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{901F562C-8333-4F36-8508-5032DAEAC20F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{901F562C-8333-4F36-8508-5032DAEAC20F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C64B11B8-FD91-48AD-A6DE-C694B8ACA87F} = {0E70A82E-D359-4438-8193-A4360D797FA7}
+		{08899F9D-45EC-40A2-9E29-01B91987D18C} = {0E70A82E-D359-4438-8193-A4360D797FA7}
+		{F97BAF87-2046-4F5B-AC9D-7101F1DD1CD4} = {0E70A82E-D359-4438-8193-A4360D797FA7}
+		{C198687E-9566-4207-8A1D-4C93A9E8E6AE} = {0E70A82E-D359-4438-8193-A4360D797FA7}
+		{8D377A89-3821-4AB9-9908-AD3AF1905CB6} = {0E70A82E-D359-4438-8193-A4360D797FA7}
+		{3087DDC6-129F-478B-B4CA-562C58DB882A} = {0E70A82E-D359-4438-8193-A4360D797FA7}
+		{979F3CF6-562D-47B0-BA6A-E7897F44857F} = {0E70A82E-D359-4438-8193-A4360D797FA7}
+		{E7B610D1-4F58-4D3F-BD8F-24F1A19B6EA2} = {0E70A82E-D359-4438-8193-A4360D797FA7}
+		{07B8EC45-304D-412F-AACD-BADDA0219B87} = {0E70A82E-D359-4438-8193-A4360D797FA7}
+		{901F562C-8333-4F36-8508-5032DAEAC20F} = {0E70A82E-D359-4438-8193-A4360D797FA7}
+	EndGlobalSection
+EndGlobal

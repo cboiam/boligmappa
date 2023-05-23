@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Boligmappa.Configuration\Boligmappa.Configuration.csproj" />
+    <ProjectReference Include="..\Boligmappa.ConsoleBase\Boligmappa.ConsoleBase.csproj" />
+    <ProjectReference Include="..\Boligmappa.Server\Boligmappa.Server.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+      <Content Include="*appsettings*json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+   </ItemGroup>
+
+</Project>

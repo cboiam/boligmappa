@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Boligmappa.Queue.Sqs\Boligmappa.Queue.Sqs.csproj" />
+    <ProjectReference Include="..\Boligmappa.Configuration\Boligmappa.Configuration.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EasyConsole" Version="1.1.0" />
+  </ItemGroup>
+
+</Project>

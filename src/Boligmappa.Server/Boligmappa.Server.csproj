@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Boligmappa.Queue.Sqs\Boligmappa.Queue.Sqs.csproj" />
+    <ProjectReference Include="..\Boligmappa.Configuration\Boligmappa.Configuration.csproj" />
+  </ItemGroup>
+ 
+</Project>
