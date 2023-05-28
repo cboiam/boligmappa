@@ -2,7 +2,7 @@ using Boligmappa.Core.Entities.Abstractions;
 
 namespace Boligmappa.Core.Entities;
 
-public record Post : Entity
+public class Post : Entity
 {
     public string Title { get; init; }
     public string Body { get; init; }
@@ -10,11 +10,20 @@ public record Post : Entity
     public string UserName { get; init; }
     public IEnumerable<string> Tags { get; init; }
     public int Reactions { get; init; }
-    public bool HasHistoryTag => Tags.Contains("history");
-    public bool HasFrenchTag => Tags.Contains("french");
-    public bool HasFictionTag => Tags.Contains("fiction");
+    public bool HasHistoryTag => ContainTag("history");
+    public bool HasFrenchTag => ContainTag("french");
+    public bool HasFictionTag => ContainTag("fiction");
     public bool HasReactions => Reactions > 0;
-    public bool HasMorethanTwoReactions => Reactions > 2;
+
+    private bool? hasMorethanTwoReactions;
+    public bool HasMorethanTwoReactions
+    {
+        get { return hasMorethanTwoReactions ?? Reactions > 2; }
+        set { hasMorethanTwoReactions = value; }
+    }
 
     public Post(int id) : base(id) { }
+
+    private bool ContainTag(string tag) =>
+        Tags?.Contains(tag, StringComparer.InvariantCultureIgnoreCase) == true;
 }

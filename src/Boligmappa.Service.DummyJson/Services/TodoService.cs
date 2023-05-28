@@ -10,13 +10,11 @@ namespace Boligmappa.Service.DummyJson.Services;
 
 public class TodoService : ITodoService
 {
-    private readonly DummyJsonSettings settings;
     private readonly string endpoint;
 
     public TodoService(IOptions<DummyJsonSettings> settings)
     {
-        this.settings = settings.Value;
-        endpoint = this.settings.BaseUrl;
+        endpoint = settings.Value.BaseUrl;
     }
 
     public async Task<IEnumerable<Todo>> GetTodos()
@@ -25,6 +23,6 @@ public class TodoService : ITodoService
             .RemovePagination()
             .GetJsonAsync<GetTodosResponse>();
 
-        return response.Todos.ToEntity();
+        return response?.Todos?.ToEntity();
     }
 }

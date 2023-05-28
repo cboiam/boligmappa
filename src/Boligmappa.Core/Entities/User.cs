@@ -2,12 +2,8 @@ using Boligmappa.Core.Entities.Abstractions;
 
 namespace Boligmappa.Core.Entities;
 
-public record User : Entity
+public class User : Entity
 {
-    public string FirstName { get; init; }
-    public string LastName { get; init; }
-    public string Email { get; init; }
-    public string Image { get; init; }
     public string CreditCard { get; init; }
     public string UserName { get; init; }
     public int PostCount { get; private set; }

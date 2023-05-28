@@ -11,6 +11,7 @@ public class Post : Model<Entities.Post>
     public User User { get; set; }
     public List<Tag> Tags { get; set; }
     public int Reactions { get; set; }
+    public bool HasMorethanTwoReactions { get; set; }
 
     public override Entities.Post ToEntity()
     {
@@ -21,7 +22,8 @@ public class Post : Model<Entities.Post>
             UserId = UserId,
             UserName = User.UserName,
             Tags = Tags?.Select(t => t.Name),
-            Reactions = Reactions
+            Reactions = Reactions,
+            HasMorethanTwoReactions = HasMorethanTwoReactions
         };
     }
 }

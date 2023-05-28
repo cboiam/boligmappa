@@ -13,9 +13,9 @@ public static class ServiceCollectionExtension
             configuration.GetSection(nameof(DummyJsonSettings))
                 .Bind(options));
 
-        services.AddScoped<IUserService, UserService>()
-            .AddScoped<IPostService, PostService>()
-            .AddScoped<ITodoService, TodoService>();
+        services.AddTransient<IUserService, UserService>()
+            .AddTransient<IPostService, PostService>()
+            .AddTransient<ITodoService, TodoService>();
 
         return services;
     }

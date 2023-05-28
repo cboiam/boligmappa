@@ -11,5 +11,4 @@ public class BoligmappaContext : DbContext
 
     public BoligmappaContext(DbContextOptions<BoligmappaContext> options)
         : base(options) { }
-
 }

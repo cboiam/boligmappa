@@ -2,6 +2,7 @@
 using Boligmappa.Data.Postgres;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Boligmappa.Data.Postgres.Migrations
 {
     [DbContext(typeof(BoligmappaContext))]
-    partial class BoligmappaContextModelSnapshot : ModelSnapshot
+    [Migration("20230528132309_Adding post column")]
+    partial class Addingpostcolumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,6 +33,9 @@ namespace Boligmappa.Data.Postgres.Migrations
 
                     b.Property<string>("Body")
                         .HasColumnType("text");
+
+                    b.Property<bool>("HasMorethanTwoReactions")
+                        .HasColumnType("boolean");
 
                     b.Property<int>("Reactions")
                         .HasColumnType("integer");

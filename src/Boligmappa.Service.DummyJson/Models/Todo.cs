@@ -8,7 +8,7 @@ public class Todo : Model<Entities.Todo>
 {    
     [JsonProperty("Todo")] 
     public string Description { get; set; }
-    public string Completed { get; set; }
+    public bool Completed { get; set; }
     public int UserId { get; set; }
 
     public override Entities.Todo ToEntity() =>

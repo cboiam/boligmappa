@@ -56,12 +56,9 @@ public class UserHandler : IUserHandler
     public async Task<int> StoreUsers()
     {
         logger.LogInformation("Loading users");
+
         var usersTask = userService.GetUsers();
-
-        logger.LogDebug("Loading posts");
         var postsTask = postService.GetPosts();
-
-        logger.LogDebug("Loading todos");
         var todosTask = todoService.GetTodos();
 
         foreach (var user in await usersTask)
@@ -72,10 +69,7 @@ public class UserHandler : IUserHandler
             user.SetPostCount(postsCount);
             user.SetTodoCount(todosCount);
 
-            logger.LogDebug("Saving user {id}", user.Id);
             await userRepository.Save(user);
-
-            logger.LogDebug("User loaded and saved in database: {id}", user.Id);
         }
 
         int userCount = (await usersTask).Count();

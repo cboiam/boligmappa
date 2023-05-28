@@ -1,6 +1,6 @@
 namespace Boligmappa.Core.Entities.Abstractions;
 
-public abstract record Entity
+public abstract class Entity
 {
     public int Id { get; }
 

@@ -10,13 +10,11 @@ namespace Boligmappa.Service.DummyJson.Services;
 
 public class UserService : IUserService
 {
-    private readonly DummyJsonSettings settings;
     private readonly string endpoint;
 
     public UserService(IOptions<DummyJsonSettings> settings)
     {
-        this.settings = settings.Value;
-        endpoint = this.settings.BaseUrl;
+        endpoint = settings.Value.BaseUrl;
     }
 
     public async Task<IEnumerable<User>> GetUsers()
@@ -25,6 +23,6 @@ public class UserService : IUserService
             .RemovePagination()
             .GetJsonAsync<GetUsersResponse>();
         
-        return response.Users.ToEntity();
+        return response?.Users?.ToEntity();
     }
 }
