@@ -1,6 +1,5 @@
 using Boligmappa.Configuration;
 using Boligmappa.Configuration.Server;
-using EasyConsole;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +10,7 @@ namespace Boligmappa.ConsoleBase;
 
 public static class ConsoleRunner
 {
-    public static void Start(Func<Menu, Menu> menuBuilder)
+    public static async Task Start(Func<Menu, Menu> menuBuilder)
     {
         var configuration = Configurations.BuildConfiguration();
 
@@ -28,31 +27,25 @@ public static class ConsoleRunner
         HubConnection connection = configuration.GetServerSettings()
             .Connect();
 
+        await connection.StartAsync();
+
         var cancellationTokenSource = new CancellationTokenSource();
         Console.CancelKeyPress += (s, e) =>
         {
             Console.Clear();
-            Console.WriteLine("Exiting application...");
             cancellationTokenSource.Cancel();
         };
 
-        connection.Closed += async (error) =>
-        {
-            await Task.Delay(new Random().Next(0, 5) * 1000);
-            await connection.StartAsync(cancellationTokenSource.Token);
-            ServerEventHandler.Configure(connection, cancellationTokenSource.Token);
-        };
-
-        ServerEventHandler.Configure(connection, cancellationTokenSource.Token);
-        ServerEventHandler.ConfigureEventResponseHandling(connection);
-
         var menu = menuBuilder(new())
-            .Add("Exit", () => cancellationTokenSource.Cancel());
+            .Add("Exit", () =>
+            {
+                cancellationTokenSource.Cancel();
+                return Task.CompletedTask;
+            });
 
-        while (!cancellationTokenSource.IsCancellationRequested)
-        {
-            Console.Clear();
-            menu.Display();
-        }
+        ServerEventHandler.Configure(connection, menu, cancellationTokenSource.Token);
+
+        await menu.Display();
+        while (!cancellationTokenSource.IsCancellationRequested) { }
     }
 }

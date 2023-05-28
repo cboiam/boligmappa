@@ -1,6 +1,7 @@
 ﻿using Boligmappa.ConsoleBase;
+using Boligmappa.Queue.Sqs;
 
-ConsoleRunner.Start(menu =>
-    menu.Add("Get featured history posts", ServerEventHandler.SendEvent(Messages.GetFeaturedHistoryPostsMessage))
-        .Add("Get popular users", ServerEventHandler.SendEvent(Messages.GetPopularUsers))
-        .Add("Get mastercard users", ServerEventHandler.SendEvent(Messages.GetMasterCardUsers)));
+await ConsoleRunner.Start(menu =>
+    menu.Add("Get featured history posts", ServerEventHandler.SendEvent(MessageType.GetFeaturedHistoryPosts))
+        .Add("Get popular users", ServerEventHandler.SendEvent(MessageType.GetPopularUsers))
+        .Add("Get mastercard users", ServerEventHandler.SendEvent(MessageType.GetMasterCardUsers)));

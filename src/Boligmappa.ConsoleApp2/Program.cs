@@ -1,4 +1,5 @@
 ﻿using Boligmappa.ConsoleBase;
+using Boligmappa.Queue.Sqs;
 
-ConsoleRunner.Start(menu =>
-    menu.Add("Store posts", ServerEventHandler.SendEvent(Messages.StorePosts)));
+await ConsoleRunner.Start(menu =>
+    menu.Add("Store posts", ServerEventHandler.SendEvent(MessageType.StorePosts)));

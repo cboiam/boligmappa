@@ -9,12 +9,21 @@ services:
       POSTGRES_PASSWORD: local
     ports:
       - 5432:5432
-  
   server:
     build: 
       context: .
       dockerfile: dockerfile.server
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Production
     ports:
-      - 5142:80
+      - 5000:80
+  worker:
+    build: 
+      context: .
+      dockerfile: dockerfile.worker
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - DB_PASSWORD=gpkdcRIEyiZVQLugeiJI
+    depends_on:
+      - postgres
+      - server

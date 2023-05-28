@@ -6,38 +6,44 @@ namespace Boligmappa.ConsoleBase;
 public static class ServerEventHandler
 {
     private static HubConnection Connection { get; set; }
+    private static Menu Menu { get; set; }
     private static CancellationToken EventCancellationToken { get; set; }
-    private static CancellationTokenSource LoaderCancellationTokenSource { get; set; }
+    private static CancellationTokenSource LoaderCancellationTokenSource { get; set; } = new();
     private static Loader loader = new Loader();
 
-    public static void Configure(HubConnection connection, CancellationToken eventCancellationToken)
+    public static void Configure(HubConnection connection, Menu menu, CancellationToken eventCancellationToken)
     {
         Connection = connection;
-        Messages.ConnectionId = connection.ConnectionId;
+        Menu = menu;
         EventCancellationToken = eventCancellationToken;
+        ConfigureEventResponseHandling();
     }
 
-    public static Action SendEvent(Message message)
+    public static Func<Task> SendEvent(MessageType type)
     {
         return async () =>
         {
-            if (Connection.State == HubConnectionState.Disconnected)
-            {
-                await Connection.StartAsync(EventCancellationToken);
-            }
-            LoaderCancellationTokenSource = new();
-            await Connection.SendAsync("SendEvent", message, EventCancellationToken);
+            var message = Messages.Get(type, Connection.ConnectionId);
+            await Connection.InvokeAsync("SendEvent", message, EventCancellationToken);
+
+            LoaderCancellationTokenSource.TryReset();
             await loader.Spin(LoaderCancellationTokenSource.Token);
         };
     }
 
-    public static void ConfigureEventResponseHandling(HubConnection connection)
+    public static void ConfigureEventResponseHandling()
     {
-        connection.On<Message, object>("EventResponse", (message, data) =>
+        Connection.On<Message, string>("EventResponse", async (message, data) =>
         {
-            if (!LoaderCancellationTokenSource.IsCancellationRequested)
-                LoaderCancellationTokenSource.Cancel();
+            Console.Clear();
+            LoaderCancellationTokenSource.Cancel();
             message.PrintFormattedData(data);
+
+            Console.Write("Press any key to continue...");
+            Console.ReadKey();
+            Console.Clear();
+
+            await Menu.Display();
         });
     }
 }

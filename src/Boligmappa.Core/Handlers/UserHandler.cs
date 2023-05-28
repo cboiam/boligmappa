@@ -39,7 +39,7 @@ public class UserHandler : IUserHandler
             
             user.SetTodos(userTodos);
         }
-        logger.LogInformation("Popiular users loaded: {count}", popularUsers.Count());
+        logger.LogInformation("Popular users loaded: {count}", popularUsers.Count());
 
         return popularUsers;
     }
@@ -75,7 +75,7 @@ public class UserHandler : IUserHandler
             logger.LogDebug("Saving user {id}", user.Id);
             await userRepository.Save(user);
 
-            logger.LogDebug("User loaded and saved in database: {user}", user);
+            logger.LogDebug("User loaded and saved in database: {id}", user.Id);
         }
 
         int userCount = (await usersTask).Count();

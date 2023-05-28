@@ -19,6 +19,22 @@
             }
         },
         {
+            "name": "worker",
+            "type": "coreclr",
+            "request": "launch",
+            "externalConsole": true,
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/src/Boligmappa.Queue.Sqs.Worker/bin/Debug/net6.0/Boligmappa.Queue.Sqs.Worker.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/Boligmappa.Queue.Sqs.Worker",
+            "console": "externalTerminal",
+            "stopAtEntry": false,
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "DB_PASSWORD": "local"
+            }
+        },
+        {
             "name": "console-app-1",
             "type": "coreclr",
             "request": "launch",
