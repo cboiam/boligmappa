@@ -2,12 +2,6 @@
   "version": 1,
   "isRoot": true,
   "tools": {
-    "amazon.lambda.tools": {
-      "version": "5.6.6",
-      "commands": [
-        "dotnet-lambda"
-      ]
-    },
     "dotnet-ef": {
       "version": "7.0.5",
       "commands": [
