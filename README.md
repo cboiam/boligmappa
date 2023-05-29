@@ -1,4 +1,4 @@
-# Weather Forecast Api
+# Boligmappa
 
 This repository is the solution for the practical test for inside job interview to work for [boligmappa](./docs/dev-recruitment-pitch.pdf), the details for it can be found inside [this document](./docs/practical-test.pdf).
 
