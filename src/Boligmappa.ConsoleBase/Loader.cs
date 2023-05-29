@@ -1,15 +1,18 @@
 namespace Boligmappa.ConsoleBase;
 
-public class Loader
+public static class Loader
 {
-    private int currentFrame;
-    private char[] frames = new[] { '|', '/', '-', '\\' };
+    private static int currentFrame;
+    private static char[] frames = new[] { '|', '/', '-', '\\' };
+    private static bool stop;
 
-    public async Task Spin(CancellationToken cancellationToken)
+    public static async Task Spin()
     {
+        stop = false;
+
         Console.Clear();
         Console.CursorVisible = false;
-        while (!cancellationToken.IsCancellationRequested)
+        while (!stop)
         {
             UpdateProgress();
             await Task.Delay(100);
@@ -18,7 +21,9 @@ public class Loader
         Console.CursorVisible = true;
     }
 
-    public void UpdateProgress()
+    public static void Stop() => stop = true;
+
+    public static void UpdateProgress()
     {
         var originalX = Console.CursorLeft;
         var originalY = Console.CursorTop;

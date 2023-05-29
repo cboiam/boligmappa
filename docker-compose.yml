@@ -14,7 +14,7 @@ services:
       context: .
       dockerfile: dockerfile.server
     environment:
-      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - 5000:80
   worker:
@@ -22,8 +22,8 @@ services:
       context: .
       dockerfile: dockerfile.worker
     environment:
-      - ASPNETCORE_ENVIRONMENT=Production
-      - DB_PASSWORD=gpkdcRIEyiZVQLugeiJI
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DB_PASSWORD=local
     depends_on:
       - postgres
       - server

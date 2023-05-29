@@ -43,9 +43,11 @@ public static class ConsoleRunner
                 return Task.CompletedTask;
             });
 
-        ServerEventHandler.Configure(connection, menu, cancellationTokenSource.Token);
+        var consoleTimeout = configuration.GetValue<int>("ConsoleTimeout");
 
-        await menu.Display();
+        ServerEventHandler.Configure(connection, menu, cancellationTokenSource, consoleTimeout);
+
+        await menu.Display(consoleTimeout, cancellationTokenSource);
         while (!cancellationTokenSource.IsCancellationRequested) { }
     }
 }

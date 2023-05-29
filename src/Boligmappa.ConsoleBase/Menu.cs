@@ -4,7 +4,7 @@ public class Menu
 {
     private readonly IDictionary<string, Func<Task>> options = new Dictionary<string, Func<Task>>();
 
-    public async Task Display()
+    public async Task Display(int timeout, CancellationTokenSource cancellationTokenSource)
     {
         var menuItems = options.ToList();
 
@@ -14,7 +14,19 @@ public class Menu
         }
         int choice = ReadInt("Choose an option:", min: 1, max: menuItems.Count);
 
-        await menuItems[choice - 1].Value();
+        try
+        {
+            Task task = menuItems[choice - 1].Value();
+            await task.WaitAsync(TimeSpan.FromMilliseconds(timeout));
+        }
+        catch (System.Exception)
+        {
+            Loader.Stop();
+            Console.Clear();
+            Console.WriteLine("Server took too long to respond");
+            Console.WriteLine("Shutting down...");
+            cancellationTokenSource.CancelAfter(4000);
+        }
     }
 
     public Menu Add(string option, Func<Task> callback)
