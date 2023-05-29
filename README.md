@@ -1,6 +1,6 @@
 # Boligmappa
 
-This repository is the solution for the practical test for inside job interview to work for [boligmappa](./docs/dev-recruitment-pitch.pdf), the details for it can be found inside [this document](./docs/practical-test.pdf).
+This repository is the solution for the practical test proposed from Inside to work for [boligmappa](./docs/dev-recruitment-pitch.pdf), the details for it can be found inside [this document](./docs/practical-test.pdf).
 
 In sumary, I needed to integrate with DummyJSON Api to get users, posts and todos and show it in a console interface. I was also asked to provide details of how I would solve using aws services, so I tought the following flow
 
