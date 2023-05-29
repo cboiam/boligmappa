@@ -10,12 +10,14 @@ public static class ServerEventHandler
     private static CancellationTokenSource EventCancellationToken { get; set; }
     private static int Timeout { get; set; }
     private static string waitingResponse = null;
+    private static Task loading;
 
     public static void Configure(HubConnection connection, Menu menu, CancellationTokenSource eventCancellationToken, int timeout)
     {
         Connection = connection;
         Menu = menu;
         EventCancellationToken = eventCancellationToken;
+        Timeout = timeout;
         ConfigureEventResponseHandling();
     }
 
@@ -27,7 +29,20 @@ public static class ServerEventHandler
             await Connection.InvokeAsync("SendEvent", message, EventCancellationToken.Token);
 
             waitingResponse = message.User;
-            await Loader.Spin();
+
+            try
+            {
+                Task task = Loader.Spin();
+                loading = task.WaitAsync(TimeSpan.FromMilliseconds(Timeout));
+            }
+            catch (System.TimeoutException)
+            {
+                Loader.Stop();
+                Console.Clear();
+                Console.WriteLine("Server took too long to respond");
+                Console.WriteLine("Shutting down...");
+                EventCancellationToken.CancelAfter(4000);
+            }
         };
     }
 
@@ -42,6 +57,8 @@ public static class ServerEventHandler
             waitingResponse = null;
 
             Loader.Stop();
+            await loading;
+
             Console.Clear();
             message.PrintFormattedData(data);
 

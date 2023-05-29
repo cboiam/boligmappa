@@ -34,6 +34,18 @@ public class UserRepository : IUserRepository
 
     public async Task Save(Entities.User user)
     {
+        var existingUser = await repository.Get(user.Id);
+        if(existingUser != null)
+        {
+            existingUser.CreditCard = user.CreditCard;
+            existingUser.PostCount = user.PostCount;
+            existingUser.TodoCount = user.TodoCount;
+            existingUser.UserName = user.UserName;
+
+            await repository.Update(existingUser);
+            return;
+        }
+
         var newUser = new User
         {
             Id = user.Id,
@@ -42,12 +54,6 @@ public class UserRepository : IUserRepository
             TodoCount = user.TodoCount,
             UserName = user.UserName
         };
-
-        if(await repository.Exists(newUser.Id))
-        {
-            await repository.Update(newUser);
-            return;
-        }
         await repository.Add(newUser);
     }
 }

@@ -1,6 +1,5 @@
 using System.Text.Json;
 using Boligmappa.Configuration;
-using Boligmappa.Queue.Sqs.Worker.Abstractions;
 using Microsoft.AspNetCore.SignalR.Client;
 
 namespace Boligmappa.Queue.Sqs.Worker.Handlers.Abstractions;
@@ -19,12 +18,8 @@ public static class Handler
         public async Task Handle(Message message)
         {
             var result = await Handle();
-            if (connection.State == HubConnectionState.Disconnected)
-            {
-                await connection.StartAsync();
-            }
             var resultData = JsonSerializer.Serialize(result, Configurations.SerializerOptions);
-            await connection.SendAsync("SendEventResponse", message, resultData);
+            await connection.InvokeAsync("SendEventResponse", message, resultData);
             await ExecuteAfterHandle(message);
         }
 
@@ -47,7 +42,7 @@ public static class Handler
             var data = message.GetData<T>();
             var result = await Handle(data);
             var resultData = JsonSerializer.Serialize(result, Configurations.SerializerOptions);
-            await connection.SendAsync("SendEventResponse", message, resultData);
+            await connection.InvokeAsync("SendEventResponse", message, resultData);
             await ExecuteAfterHandle(message);
         }
 

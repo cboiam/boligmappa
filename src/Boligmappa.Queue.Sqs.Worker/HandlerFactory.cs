@@ -1,4 +1,4 @@
-using Boligmappa.Queue.Sqs.Worker.Abstractions;
+using Boligmappa.Queue.Sqs.Worker.Handlers.Abstractions;
 using Boligmappa.Queue.Sqs.Worker.Handlers;
 using Microsoft.AspNetCore.SignalR.Client;
 

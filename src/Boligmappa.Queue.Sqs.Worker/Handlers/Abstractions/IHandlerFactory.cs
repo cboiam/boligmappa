@@ -1,4 +1,4 @@
-namespace Boligmappa.Queue.Sqs.Worker.Abstractions;
+namespace Boligmappa.Queue.Sqs.Worker.Handlers.Abstractions;
 
 public interface IHandlerFactory
 {

@@ -5,7 +5,7 @@ using Boligmappa.Core.Handlers.Abstractions;
 using Boligmappa.Data.Postgres;
 using Boligmappa.Queue.Sqs;
 using Boligmappa.Queue.Sqs.Worker;
-using Boligmappa.Queue.Sqs.Worker.Abstractions;
+using Boligmappa.Queue.Sqs.Worker.Handlers.Abstractions;
 using Boligmappa.Service.DummyJson;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +16,8 @@ var configuration = Configurations.BuildConfiguration();
 
 HubConnection connection = configuration.GetServerSettings()
     .Connect();
+
+await connection.StartAsync();
 
 var host = Host.CreateDefaultBuilder(args)
     .ConfigureLogging(logging =>

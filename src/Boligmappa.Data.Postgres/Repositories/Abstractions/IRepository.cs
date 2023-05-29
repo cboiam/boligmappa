@@ -11,7 +11,6 @@ public interface IRepository<TModel, TEntity>
     DbSet<TModel> DbSet { get; }
     Task<IEnumerable<TModel>> GetAll();
     Task<TModel> Get(int id);
-    Task<bool> Exists(int id);
     Task<TModel> Add(TModel entity);
     Task<TModel> Update(TModel entity);
     Task<TModel> Delete(int id);

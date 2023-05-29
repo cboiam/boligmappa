@@ -17,6 +17,5 @@ public class AppHub : Hub
         await sqsQueue.SendMessage(sqsEvent);
 
     public async Task SendEventResponse(Message sqsEvent, string data) =>
-        await Clients.Client(sqsEvent.User)
-            .SendAsync("EventResponse", sqsEvent, data);
+        await Clients.All.SendAsync("EventResponse", sqsEvent, data);
 }

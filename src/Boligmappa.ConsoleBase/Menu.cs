@@ -14,19 +14,7 @@ public class Menu
         }
         int choice = ReadInt("Choose an option:", min: 1, max: menuItems.Count);
 
-        try
-        {
-            Task task = menuItems[choice - 1].Value();
-            await task.WaitAsync(TimeSpan.FromMilliseconds(timeout));
-        }
-        catch (System.Exception)
-        {
-            Loader.Stop();
-            Console.Clear();
-            Console.WriteLine("Server took too long to respond");
-            Console.WriteLine("Shutting down...");
-            cancellationTokenSource.CancelAfter(4000);
-        }
+        await menuItems[choice - 1].Value();
     }
 
     public Menu Add(string option, Func<Task> callback)

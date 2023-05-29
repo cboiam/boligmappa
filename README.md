@@ -11,7 +11,7 @@ graph TD;
     WebSocket-->Queue;
     Queue-->Worker;
     Worker-->Postgres;
-    Worker-->WebSocket
+    Worker-->WebSocket;
 ```
 
 The services used for this was: 

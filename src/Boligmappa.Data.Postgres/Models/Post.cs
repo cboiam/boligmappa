@@ -5,8 +5,8 @@ using Entities = Boligmappa.Core.Entities;
 
 public class Post : Model<Entities.Post>
 {
-    public string Title { get; init; }
-    public string Body { get; init; }
+    public string Title { get; set; }
+    public string Body { get; set; }
     public int UserId { get; set; }
     public User User { get; set; }
     public List<Tag> Tags { get; set; }

@@ -24,6 +24,7 @@ public sealed class Repository<TModel, TEntity> : IRepository<TModel, TEntity>
 
     public async Task<TModel> Add(TModel entity)
     {
+        context.ChangeTracker.Clear();
         var result = await DbSet.AddAsync(entity);
         await Save();
 
@@ -46,12 +47,6 @@ public sealed class Repository<TModel, TEntity> : IRepository<TModel, TEntity>
             .FirstOrDefaultAsync();
     }
 
-    public async Task<bool> Exists(int id)
-    {
-        var entity = await Get(id);
-        return entity != null;
-    }
-
     public async Task<IEnumerable<TModel>> GetAll()
     {
         return await DbSet.AsNoTracking()
@@ -60,6 +55,7 @@ public sealed class Repository<TModel, TEntity> : IRepository<TModel, TEntity>
 
     public async Task<TModel> Update(TModel entity)
     {
+        context.ChangeTracker.Clear();
         var result = DbSet.Update(entity);
         await Save();
 

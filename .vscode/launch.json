@@ -15,7 +15,9 @@
                 "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
             },
             "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "AccessKey":"AKIA3U2OCHZPO6P22QJL",
+                "SecretKey":"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"
             }
         },
         {
@@ -31,7 +33,9 @@
             "stopAtEntry": false,
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "DB_PASSWORD": "local"
+                "DB_PASSWORD": "local",
+                "AccessKey":"AKIA3U2OCHZPO6P22QJL",
+                "SecretKey":"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"
             }
         },
         {

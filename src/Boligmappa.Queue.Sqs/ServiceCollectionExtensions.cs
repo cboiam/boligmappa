@@ -21,8 +21,8 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<IAmazonSQS>(provider =>
         {
             var settings = provider.GetRequiredService<IOptions<SqsSettings>>().Value;
-            var accessKey = settings.AccessKey;
-            var secretKey = settings.SecretKey;
+            var accessKey = configuration.GetValue<string>("AccessKey");
+            var secretKey = configuration.GetValue<string>("SecretKey");
             var region = RegionEndpoint.GetBySystemName(settings.Region);
 
             var credentials = new BasicAWSCredentials(accessKey, secretKey);
